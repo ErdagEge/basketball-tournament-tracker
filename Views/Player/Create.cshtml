@@ -1,0 +1,15 @@
+﻿@model basketball_tournament_tracker.Models.Player
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="JerseyNumber"></label>
+        <input asp-for="JerseyNumber" type="number" />
+        <span asp-validation-for="JerseyNumber"></span>
+    </div>
+    <button type="submit">Create Player</button>
+</form>

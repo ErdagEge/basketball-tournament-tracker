@@ -1,0 +1,22 @@
+﻿@model IEnumerable<basketball_tournament_tracker.Models.Tournament>
+
+<h2>Tournaments</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tournament in Model)
+        {
+            <tr>
+                <td>@tournament.Name</td>
+                <td>@tournament.StartDate.ToShortDateString()</td>
+                <td>@tournament.EndDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

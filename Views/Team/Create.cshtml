@@ -1,0 +1,10 @@
+﻿@model basketball_tournament_tracker.Models.Team
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <button type="submit">Create Team</button>
+</form>

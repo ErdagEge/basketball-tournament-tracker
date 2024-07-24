@@ -1,0 +1,18 @@
+﻿@model IEnumerable<basketball_tournament_tracker.Models.Team>
+
+<h2>Teams</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model)
+        {
+            <tr>
+                <td>@team.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
