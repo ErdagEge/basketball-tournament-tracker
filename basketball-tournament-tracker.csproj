@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\HomeIndexStyle.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\css\PlayerIndexStyle.css" />
   </ItemGroup>
 
