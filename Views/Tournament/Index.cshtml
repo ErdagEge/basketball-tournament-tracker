@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<basketball_tournament_tracker.Models.Tournament>
 
+<link rel="stylesheet" href="~/css/TournamentIndexStyle.css"/>
 <h2>Tournaments</h2>
 <table>
     <thead>
@@ -20,3 +21,4 @@
         }
     </tbody>
 </table>
+<a asp-action="Create" class="create-tournament">Create Tournament</a>

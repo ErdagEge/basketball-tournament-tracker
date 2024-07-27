@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<basketball_tournament_tracker.Models.Player>
 
+<link rel="stylesheet" href="~/css/PlayerIndexStyle.css" />
 <h2>Players</h2>
 <table>
     <thead>
         <tr>
             <th>Name</th>
+            <th>Team</th>
             <th>Jersey Number</th>
+            <th>Position</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +16,11 @@
         {
             <tr>
                 <td>@player.Name</td>
+                <td>@player.Team</td>
                 <td>@player.JerseyNumber</td>
+                <td>@player.Position</td>
             </tr>
         }
     </tbody>
 </table>
+<a asp-action="Create" class="create-player">Create Player</a> 
