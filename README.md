@@ -1,8 +1,8 @@
 # Basketball Tournament Tracker
 
-The **Basketball Tournament Tracker** is a web application built with C# and a NoSQL database. It is designed to streamline the organization and management of basketball tournaments by enabling easy tournament creation, team and player management, and real-time updates to tournament tables.
+The **Basketball Tournament Tracker** is a web application built with .NET MVC using a NoSQL database. It is designed to streamline the organization and management of basketball tournaments by enabling easy tournament creation, team and player management, and real-time updates to tournament tables.
 
-## Features
+## Planned Features
 
 - **Tournament Creation:** Easily set up new tournaments with customizable parameters.
 - **Team Management:** Add, edit, and manage teams participating in the tournament.
@@ -22,6 +22,7 @@ The **Basketball Tournament Tracker** is a web application built with C# and a N
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
 1. Fork the repository.
+
 2. Create a new branch:
     ```bash
     git checkout -b feature/your-feature-name
