@@ -1,4 +1,7 @@
 ﻿@model basketball_tournament_tracker.Models.Player
+@{
+    var teams = ViewBag.Teams as List<basketball_tournament_tracker.Models.Team>;
+}
 
 <form asp-action="Create" method="post">
     <div>
@@ -8,7 +11,15 @@
     </div>
     <div>
         <label asp-for="Team"></label>
-        <input asp-for="Team"/>
+        <select asp-for="Team">
+            @if (teams != null)
+            {
+                foreach (var team in teams)
+                {
+                    <option value="@team.Name">@team.Name</option>
+                }
+            }
+        </select>
         <span asp-validation-for="Team"></span>
     </div>
     <div>
