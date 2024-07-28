@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Players</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +14,16 @@
         {
             <tr>
                 <td>@team.Name</td>
+                <td>
+                    <ul>
+                        @foreach (var player in team.Players)
+                        {
+                            <li>@player.Name (@player.Position) - #@player.JerseyNumber</li>
+                        }
+                    </ul>
+                </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-action="Create" class="create-team">Create Team</a>
+<a asp-action="Create" class="create-team btn btn-primary">Create Team</a>

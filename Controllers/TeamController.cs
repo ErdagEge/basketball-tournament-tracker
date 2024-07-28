@@ -53,6 +53,13 @@ namespace basketball_tournament_tracker.Controllers
         {
             _logger.LogInformation("GET Index action called.");
             var teams = _databaseService.Teams.Find(t => true).ToList();
+            var players = _databaseService.Players.Find(p => true).ToList();
+
+            foreach (var team in teams)
+            {
+                team.Players = players.Where(p => p.Team == team.Name).ToList();
+            }
+
             return View(teams);
         }
     }
