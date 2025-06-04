@@ -2,7 +2,6 @@
 using MongoDB.Driver;
 using basketball_tournament_tracker.Models;
 using basketball_tournament_tracker.Settings;
-using System.Numerics;
 
 namespace basketball_tournament_tracker.Services
 {
