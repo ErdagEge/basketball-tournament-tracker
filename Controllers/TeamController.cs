@@ -3,6 +3,7 @@ using basketball_tournament_tracker.Models;
 using basketball_tournament_tracker.Services;
 using MongoDB.Driver;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace basketball_tournament_tracker.Controllers
 {
@@ -25,14 +26,14 @@ namespace basketball_tournament_tracker.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TeamViewModel teamViewModel)
+        public async Task<IActionResult> Create(TeamViewModel teamViewModel)
         {
             _logger.LogInformation("POST Create action called.");
             if (ModelState.IsValid)
             {
                 _logger.LogInformation("Model state is valid.");
                 var team = new Team { Name = teamViewModel.Name };
-                _databaseService.Teams.InsertOne(team);
+                await _databaseService.Teams.InsertOneAsync(team);
                 _logger.LogInformation("Team inserted into database.");
                 return RedirectToAction("Index");
             }
@@ -49,11 +50,13 @@ namespace basketball_tournament_tracker.Controllers
             return View(teamViewModel);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             _logger.LogInformation("GET Index action called.");
-            var teams = _databaseService.Teams.Find(t => true).ToList();
-            var players = _databaseService.Players.Find(p => true).ToList();
+            var teamsCursor = await _databaseService.Teams.FindAsync(t => true);
+            var teams = await teamsCursor.ToListAsync();
+            var playersCursor = await _databaseService.Players.FindAsync(p => true);
+            var players = await playersCursor.ToListAsync();
 
             foreach (var team in teams)
             {
