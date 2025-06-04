@@ -14,7 +14,25 @@ The **Basketball Tournament Tracker** is a web application built with .NET MVC u
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/basketball-tournament-tracker.git
+    git clone https://github.com/ErdagEge/basketball-tournament-tracker.git
+    ```
+
+2. Navigate into the project directory and restore dependencies:
+    ```bash
+    cd basketball-tournament-tracker
+    dotnet restore
+    ```
+
+3. Build the project:
+    ```bash
+    dotnet build
+    ```
+
+4. Ensure MongoDB is running on `mongodb://localhost:27017/` (the default connection string).
+
+5. Run the application:
+    ```bash
+    dotnet run
     ```
 
 ## Contributing
