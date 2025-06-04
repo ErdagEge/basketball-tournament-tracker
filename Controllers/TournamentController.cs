@@ -2,6 +2,7 @@
 using basketball_tournament_tracker.Models;
 using basketball_tournament_tracker.Services;
 using MongoDB.Driver;
+using System.Threading.Tasks;
 
 namespace basketball_tournament_tracker.Controllers
 {
@@ -21,19 +22,20 @@ namespace basketball_tournament_tracker.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Tournament tournament)
+        public async Task<IActionResult> Create(Tournament tournament)
         {
             if (ModelState.IsValid)
             {
-                _databaseService.Tournaments.InsertOne(tournament);
+                await _databaseService.Tournaments.InsertOneAsync(tournament);
                 return RedirectToAction("Index");
             }
             return View(tournament);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var tournaments = _databaseService.Tournaments.Find(t => true).ToList();
+            var tournamentsCursor = await _databaseService.Tournaments.FindAsync(t => true);
+            var tournaments = await tournamentsCursor.ToListAsync();
             return View(tournaments);
         }
     }

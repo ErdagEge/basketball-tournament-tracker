@@ -17,29 +17,32 @@ namespace basketball_tournament_tracker.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var teams = _databaseService.Teams.Find(t => true).ToList();
+            var teamsCursor = await _databaseService.Teams.FindAsync(t => true);
+            var teams = await teamsCursor.ToListAsync();
             ViewBag.Teams = teams;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Player player)
+        public async Task<IActionResult> Create(Player player)
         {
             if (ModelState.IsValid)
             {
-                _databaseService.Players.InsertOne(player);
+                await _databaseService.Players.InsertOneAsync(player);
                 return RedirectToAction("Index");
             }
-            var teams = _databaseService.Teams.Find(t => true).ToList();
+            var teamsCursor = await _databaseService.Teams.FindAsync(t => true);
+            var teams = await teamsCursor.ToListAsync();
             ViewBag.Teams = teams;
             return View(player);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var players = _databaseService.Players.Find(p => true).ToList();
+            var playersCursor = await _databaseService.Players.FindAsync(p => true);
+            var players = await playersCursor.ToListAsync();
             return View(players);
         }
     }
